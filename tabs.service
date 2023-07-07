@@ -1,0 +1,16 @@
+[Unit]
+Description=Tabs Service
+After=network.target
+
+[Service]
+WorkingDirectory=/usr/local/share/tabs
+ExecStart=/usr/local/share/dotnet/dotnet /usr/local/share/tabs/tabs.dll
+Restart=always
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=tabs
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+
+[Install]
+WantedBy=multi-user.target
